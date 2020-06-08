@@ -28,18 +28,8 @@ export default {
       console.log(val , '  watch')
     }
   },
-  mounted(){
-    let arr = [1,2];
-    Array.prototype.aTest = function(){
-      return '132131531'
-    };
-    console.log(arr.aTest())
-  },
 }
 </script>
 
 <style>
-#app {
-
-}
 </style>

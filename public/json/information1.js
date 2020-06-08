@@ -7,11 +7,11 @@ export default [
         element: 'input',
         value: '',
         rightBut: {
-            title:'right1',
-            type:'primary',
-            func:function(e){
-                console.log(this,e,'   func');
-                this.data.test = 'kmkmkmkmk'
+            title: 'right1',
+            type: 'primary',
+            func(val, e) {
+                console.log(this, e, '   Input1');
+                this.data.test = val
             }
         },
         rules: {required: true, message: 'message test', trigger: 'blur'}
@@ -21,19 +21,31 @@ export default [
         element: 'input',
         value: '',
         rightBut: {
-            title:'right2',
-            type:'primary'
+            title: 'right2',
+            type: 'primary',
+            func(val, e) {
+                console.log(this, e, '   Input2');
+                this.data.test = val
+            }
         },
     },
     {
         label: 'Input3',
         element: 'input',
         rightBut: {
-            title:'right',
-            type:'primary',
-            func:function(e){
-                console.log(this,e,'   func');
-                this.data.test = '8888888'
+            title: 'right',
+            type: 'primary',
+            func(val, e) {
+                console.log(this, e, '   Input3 right');
+                this.data.test = [val[0].value,val[1].value]
+            }
+        },
+        leftBut: {
+            title: 'left',
+            type: 'primary',
+            func(val, e) {
+                console.log(this, e, '   Input3 left');
+                this.data.test = [val[0].value,val[1].value]
             }
         },
         data: [
@@ -53,33 +65,37 @@ export default [
         // textStyle: 'color:#666666',
         element: 'radio',
         value: 1,
-        data:[
+        data: [
             {
                 label: 1,
-                content:'radio1-1',
-                icon:'logo-angular',
-            },{
+                content: 'radio1-1',
+                icon: 'logo-angular',
+            }, {
                 label: 2,
-                content:'radio1-2',
-                icon:'ios-at',
+                content: 'radio1-2',
+                icon: 'ios-at',
             },
         ],
-        rules: {required: true, message: 'message test', trigger: 'change',type:'number'}
+        rules: {required: true, message: 'message test', trigger: 'change', type: 'number'}
     },
     {
         label: 'Input4',
         element: 'input',
         value: '',
         rightBut: {
-            title:'right4',
-            type:'primary'
+            title: 'right4',
+            type: 'primary',
+            func(val, e) {
+                console.log(this, e, '   Input4 right');
+                this.data.test = val
+            }
         },
         leftBut: {
-            title:'left1',
-            type:'primary',
-            func:function(e){
-                console.log(this,e,'   func');
-                this.data.test = '333333333'
+            title: 'left1',
+            type: 'primary',
+            func(val, e) {
+                console.log(this, e, '   Input4 left');
+                this.data.test = val
             }
         },
         rules: {required: true, message: 'message test', trigger: 'blur'}

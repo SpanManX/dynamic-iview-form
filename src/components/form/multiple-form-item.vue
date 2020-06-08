@@ -12,14 +12,14 @@
                 :prop="`items.${index}.data.${num}.value`"
                 :rules="val.rules">
             <div style="display: flex;">
-                <Button @click="itemData.leftBut.func ? itemData.leftBut.func.call($attrs,$refs[`multipleFormItem${num}`]) : null "
+                <Button @click="butClick(itemData.leftBut.func,itemData.data,num)"
                         style="margin-right: 10px" type="primary"
                         v-bind="$attrs"
                         v-if="itemData.leftBut && num === 0">
                     {{itemData.leftBut.title}}
                 </Button>
                 <Input v-bind="$attrs" type="text" v-model="val.value"></Input>
-                <Button @click="itemData.rightBut.func ? itemData.rightBut.func.call($attrs,$refs[`multipleFormItem${num}`][0]) : null "
+                <Button @click="butClick(itemData.rightBut.func,itemData.data,num)"
                         v-bind="$attrs"
                         style="margin-left: 10px" :type="itemData.rightBut.type"
                         v-if="itemData.rightBut && num === (itemData.data.length - 1)">
@@ -39,6 +39,11 @@
         props: {
             itemData: Object,
             index: Number
+        },
+        methods:{
+            butClick(func,data,num){
+                return func ? func.call(this.$attrs,data,this.$refs[`multipleFormItem${num}`]) : null
+            }
         }
     }
 </script>

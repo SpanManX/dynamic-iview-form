@@ -10,7 +10,7 @@
                 :prop="`items.${index}.value`"
                 :rules="itemData.rules">
             <div style="display: flex;">
-                <Button @click="itemData.leftBut.func ? itemData.leftBut.func.call($attrs,$refs.singleFormItem) : null "
+                <Button @click="butClick(itemData.leftBut.func,itemData.value)"
                         v-bind="$attrs"
                         style="margin-right: 10px" type="primary" v-if="itemData.leftBut">
                     {{itemData.leftBut.title}}
@@ -19,7 +19,7 @@
                 <Input v-else type="textarea" :autosize="itemData.textarea.autosize"
                        :maxlength="itemData.textarea.maxlength" :show-word-limit="itemData.textarea.showWordLimit"
                        v-model="itemData.value"></Input>
-                <Button @click="itemData.rightBut.func ? itemData.rightBut.func.call($attrs,$refs.singleFormItem) : null "
+                <Button @click="butClick(itemData.rightBut.func,itemData.value)"
                         v-bind="$attrs"
                         style="margin-left: 10px" :type="itemData.rightBut.type" v-if="itemData.rightBut">
                     {{itemData.rightBut.title}}
@@ -42,11 +42,11 @@
         data() {
             return {}
         },
-        mounted() {
-            // setTimeout(()=>{
-            // this.$refs.singleFormItem.formData = this._data
-            // },1000)
-        },
+        methods:{
+            butClick(func,value){
+                return func ? func.call(this.$attrs,value,this.$refs.singleFormItem) : null
+            }
+        }
     }
 </script>
 
