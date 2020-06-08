@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>点击事件及提交事件返回值，请查看控制台</h1>
     <dynamicForm :options-prop="optionsProp" :data="_data" :json="formDynamic"></dynamicForm>
   </div>
 </template>
